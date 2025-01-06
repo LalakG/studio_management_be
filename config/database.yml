@@ -79,20 +79,10 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
-    <<: *default
-    database: studio_management_api_production
-    username: studio_management_api
-    password: <%= ENV["STUDIO_MANAGEMENT_API_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: studio_management_api_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: studio_management_api_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: studio_management_api_production_cable
-    migrations_paths: db/cable_migrate
+  <<: *default
+  database: studio_management_wksy
+  url: <%= ENV['DATABASE_URL'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: 5432
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
